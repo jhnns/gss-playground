@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+}
+
+#page {
+    background: fuchsia;
+    center-x: == ::window[center-x];
+    top: == ::window[top];
+    left: == ::window[left];
+    right: == ::window[right];
+    min-height: == ::window[height];
+    width: <= 950;
+}
