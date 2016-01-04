@@ -1,0 +1,120 @@
+"page" {
+    padding: == 16 !require;
+    width: <= 1200 !require;
+    center-x: == ::window[center-x];
+    height: >= ::window[height] - &[padding] * 2;
+    top: == ::window[top] + &[padding];
+    left: == ::window[left] + &[padding];
+    right: == ::window[right] - &[padding];
+}
+
+"col-1...12" {
+    gutter: == 12 !require;
+    width: == "page"[width] / 12 - &[gutter] * (11/12);
+    top: == "page"[top];
+    bottom: == "page"[bottom];
+    right: == &:next[left] - &[gutter];
+}
+
+"col-1" {
+    left: == "page"[left];
+}
+
+body {
+    margin: 0;
+}
+
+.helper {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#page {
+    left: == "page"[left];
+    right: == "page"[right];
+    top: == "page"[top];
+    bottom: == "page"[bottom];
+}
+
+#col-1 {
+    left: == "col-1"[left];
+    right: == "col-1"[right];
+    top: == "col-1"[top];
+    bottom: == "col-1"[bottom];
+}
+
+#col-2 {
+    left: == "col-2"[left];
+    right: == "col-2"[right];
+    top: == "col-2"[top];
+    bottom: == "col-2"[bottom];
+}
+
+#col-3 {
+    left: == "col-3"[left];
+    right: == "col-3"[right];
+    top: == "col-3"[top];
+    bottom: == "col-3"[bottom];
+}
+
+#col-4 {
+    left: == "col-4"[left];
+    right: == "col-4"[right];
+    top: == "col-4"[top];
+    bottom: == "col-4"[bottom];
+}
+
+#col-5 {
+    left: == "col-5"[left];
+    right: == "col-5"[right];
+    top: == "col-5"[top];
+    bottom: == "col-5"[bottom];
+}
+
+#col-6 {
+    left: == "col-6"[left];
+    right: == "col-6"[right];
+    top: == "col-6"[top];
+    bottom: == "col-6"[bottom];
+}
+
+#col-7 {
+    left: == "col-7"[left];
+    right: == "col-7"[right];
+    top: == "col-7"[top];
+    bottom: == "col-7"[bottom];
+}
+
+#col-8 {
+    left: == "col-8"[left];
+    right: == "col-8"[right];
+    top: == "col-8"[top];
+    bottom: == "col-8"[bottom];
+}
+
+#col-9 {
+    left: == "col-9"[left];
+    right: == "col-9"[right];
+    top: == "col-9"[top];
+    bottom: == "col-9"[bottom];
+}
+
+#col-10 {
+    left: == "col-10"[left];
+    right: == "col-10"[right];
+    top: == "col-10"[top];
+    bottom: == "col-10"[bottom];
+}
+
+#col-11 {
+    left: == "col-11"[left];
+    right: == "col-11"[right];
+    top: == "col-11"[top];
+    bottom: == "col-11"[bottom];
+}
+
+#col-12 {
+    left: == "col-12"[left];
+    right: == "col-12"[right];
+    top: == "col-12"[top];
+    bottom: == "col-12"[bottom];
+}
