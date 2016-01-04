@@ -2,18 +2,18 @@
     padding: == 16 !require;
     width: <= 1200 !require;
     center-x: == ::window[center-x];
-    height: >= ::window[height] - &[padding] * 2;
     top: == ::window[top] + &[padding];
     left: == ::window[left] + &[padding];
     right: == ::window[right] - &[padding];
+    bottom: == ::window[bottom] - &[padding];
 }
 
 "col-1...12" {
     gutter: == 12 !require;
     width: == "page"[width] / 12 - &[gutter] * (11/12);
     top: == "page"[top];
-    bottom: == "page"[bottom];
     right: == &:next[left] - &[gutter];
+    bottom: == "page"[bottom];
 }
 
 "col-1" {
@@ -24,15 +24,22 @@ body {
     margin: 0;
 }
 
-.helper {
-    background: rgba(0, 0, 0, 0.05);
+.visual-grid {
+    background: rgba(0, 0, 0, 0.02);
 }
 
-#page {
+.text-body {
+    left: == "col-4"[left];
+    right: == "col-9"[right];
+    height: == &[intrinsic-height];
+}
+
+.section {
     left: == "page"[left];
     right: == "page"[right];
-    top: == "page"[top];
-    bottom: == "page"[bottom];
+    top: >= "page"[top];
+    top: == &:previous[bottom];
+    height: == .text-body[height];
 }
 
 #col-1 {
