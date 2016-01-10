@@ -1,27 +1,29 @@
 "page" {
     padding: == 16 !require;
     width: <= 1200 !require;
-    center-x: == ::window[center-x];
-    top: == ::window[top] + &[padding];
-    left: == ::window[left] + &[padding];
+    center-x: == ::window[center-x] !require;
+    top: == ::window[top] + &[padding] !require;
+    left: >= ::window[left] + &[padding] !require;
+    right: <= ::window[right] + &[padding] !require;
 }
 
 "col-1...12" {
     gutter: == 12 !require;
-    width: == "page"[width] / 12 - &[gutter] * (11/12);
-    top: == "page"[top];
-    right: == &:next[left] - &[gutter];
-    bottom: == ($ body)[bottom];
+    width: == "page"[width] / 12 - &[gutter] * (11/12) !require;
+    top: == "page"[top] !require;
+    right: == &:next[left] - &[gutter] !require;
+    bottom: == ($ body)[bottom] - "page"[padding] !require;
 }
 
 "col-1" {
-    left: == "page"[left];
+    left: == "page"[left] !require;
 }
 
 body {
     margin: 0;
-    top: == "page"[top];
-    bottom: == section:last[bottom];
+    width: == "page"[width];
+    top: == 0;
+    bottom: == section:last[bottom] + "page"[padding];
 }
 
 .visual-grid {
