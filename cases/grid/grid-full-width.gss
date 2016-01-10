@@ -4,8 +4,6 @@
     center-x: == ::window[center-x];
     top: == ::window[top] + &[padding];
     left: == ::window[left] + &[padding];
-    right: == ::window[right] - &[padding];
-    bottom: == ::window[bottom] - &[padding];
 }
 
 "col-1...12" {
@@ -13,7 +11,7 @@
     width: == "page"[width] / 12 - &[gutter] * (11/12);
     top: == "page"[top];
     right: == &:next[left] - &[gutter];
-    bottom: == "page"[bottom];
+    bottom: == ($ body)[bottom];
 }
 
 "col-1" {
@@ -22,6 +20,8 @@
 
 body {
     margin: 0;
+    top: == "page"[top];
+    bottom: == section:last[bottom];
 }
 
 .visual-grid {
@@ -31,15 +31,12 @@ body {
 .text-body {
     left: == "col-4"[left];
     right: == "col-9"[right];
-    height: == &[intrinsic-height];
 }
 
 .section {
-    left: == "page"[left];
-    right: == "page"[right];
     top: >= "page"[top];
     top: == &:previous[bottom];
-    height: == .text-body[height];
+    height: == &[intrinsic-height];
 }
 
 #col-1 {
