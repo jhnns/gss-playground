@@ -1,6 +1,6 @@
 "page" {
     padding: == 16 !require;
-    width: <= 1200 !require;
+    width: <= 1300 !require;
     center-x: == ::window[center-x] !require;
     top: == ::window[top] + &[padding] !require;
     left: >= ::window[left] + &[padding] !require;
@@ -17,15 +17,15 @@
     gutter: == 12 !require;
     width: == "page"[width] / 12 - &[gutter] * (11/12) !require;
     top: == "page"[top] !require;
-    right: == &:next[left] - &[gutter];
+    right: == &:next[left] - &[gutter] !require;
     bottom: == ($ body)[bottom] - "page"[padding] !require;
 }
 
-"col-m-1...4" {
+"col-m-1...6" {
     gutter: == 8 !require;
-    width: == "page"[width] / 4 - &[gutter] * (3/4) !require;
+    width: == "page"[width] / 6 - &[gutter] * (5/6) !require;
     top: == "page"[top] !require;
-    right: == &:next[left] - &[gutter];
+    right: == &:next[left] - &[gutter] !require;
     bottom: == ($ body)[bottom] - "page"[padding] !require;
 }
 
@@ -38,26 +38,23 @@
 body {
     margin: 0;
     width: == "page"[width];
-    top: == 0;
+    center-x: == "page"[center-x];
+    top: == "page"[top];
     bottom: == section:last[bottom] + "page"[padding];
 }
 
-.visual-grid {
-    background: rgba(0, 0, 0, 0.02);
-}
-
 .text-body {
-    @if "page"[width] > 700 {
-        left: == "col-l-4"[left];
-        right: == "col-l-9"[right];
-    }
-    @if "page"[width] <= 700 {
-        left: == "col-m-2"[left];
-        right: == "col-m-3"[right];
-    }
-    @if "page"[width] <= 500 {
+    @if "page"[width] < 500 {
         left: == "col-s-1"[left];
         right: == "col-s-1"[right];
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "col-m-2"[left];
+        right: == "col-m-5"[right];
+    }
+    @if "page"[width] >= 960 {
+        left: == "col-l-4"[left];
+        right: == "col-l-9"[right];
     }
 }
 
@@ -67,86 +64,122 @@ body {
     height: == &[intrinsic-height];
 }
 
+/* ==================================================== */
+/* the following styles are just for grid visualization */
+/* ==================================================== */
+
+.visual-grid {
+    background: rgba(0, 0, 0, 0.05);
+}
+
 #col-1 {
-    left: == "col-l-1"[left];
-    right: == "col-l-1"[right];
-    top: == "col-l-1"[top];
-    bottom: == "col-l-1"[bottom];
+    @if "page"[width] < 500 {
+        center: == "col-s-1"[center];
+        size: == "col-s-1"[size];
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        center: == "col-m-1"[center];
+        size: == "col-m-1"[size];
+    }
+    @if "page"[width] >= 960 {
+        center: == "col-l-1"[center];
+        size: == "col-l-1"[size];
+    }
 }
 
 #col-2 {
-    left: == "col-l-2"[left];
-    right: == "col-l-2"[right];
-    top: == "col-l-2"[top];
-    bottom: == "col-l-2"[bottom];
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        center: == "col-m-2"[center];
+        size: == "col-m-2"[size];
+    }
+    @if "page"[width] >= 960 {
+        center: == "col-l-2"[center];
+        size: == "col-l-2"[size];
+    }
 }
 
 #col-3 {
-    left: == "col-l-3"[left];
-    right: == "col-l-3"[right];
-    top: == "col-l-3"[top];
-    bottom: == "col-l-3"[bottom];
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        center: == "col-m-3"[center];
+        size: == "col-m-3"[size];
+    }
+    @if "page"[width] >= 960 {
+        center: == "col-l-3"[center];
+        size: == "col-l-3"[size];
+    }
 }
 
 #col-4 {
-    left: == "col-l-4"[left];
-    right: == "col-l-4"[right];
-    top: == "col-l-4"[top];
-    bottom: == "col-l-4"[bottom];
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        center: == "col-m-4"[center];
+        size: == "col-m-4"[size];
+    }
+    @if "page"[width] >= 960 {
+        center: == "col-l-4"[center];
+        size: == "col-l-4"[size];
+    }
 }
 
 #col-5 {
-    left: == "col-l-5"[left];
-    right: == "col-l-5"[right];
-    top: == "col-l-5"[top];
-    bottom: == "col-l-5"[bottom];
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        center: == "col-m-5"[center];
+        size: == "col-m-5"[size];
+    }
+    @if "page"[width] >= 960 {
+        center: == "col-l-5"[center];
+        size: == "col-l-5"[size];
+    }
 }
 
 #col-6 {
-    left: == "col-l-6"[left];
-    right: == "col-l-6"[right];
-    top: == "col-l-6"[top];
-    bottom: == "col-l-6"[bottom];
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        center: == "col-m-6"[center];
+        size: == "col-m-6"[size];
+    }
+    @if "page"[width] >= 960 {
+        center: == "col-l-6"[center];
+        size: == "col-l-6"[size];
+    }
 }
 
 #col-7 {
-    left: == "col-l-7"[left];
-    right: == "col-l-7"[right];
-    top: == "col-l-7"[top];
-    bottom: == "col-l-7"[bottom];
+    @if "page"[width] >= 960 {
+        center: == "col-l-7"[center];
+        size: == "col-l-7"[size];
+    }
 }
 
 #col-8 {
-    left: == "col-l-8"[left];
-    right: == "col-l-8"[right];
-    top: == "col-l-8"[top];
-    bottom: == "col-l-8"[bottom];
+    @if "page"[width] >= 960 {
+        center: == "col-l-8"[center];
+        size: == "col-l-8"[size];
+    }
 }
 
 #col-9 {
-    left: == "col-l-9"[left];
-    right: == "col-l-9"[right];
-    top: == "col-l-9"[top];
-    bottom: == "col-l-9"[bottom];
+    @if "page"[width] >= 960 {
+        center: == "col-l-9"[center];
+        size: == "col-l-9"[size];
+    }
 }
 
 #col-10 {
-    left: == "col-l-10"[left];
-    right: == "col-l-10"[right];
-    top: == "col-l-10"[top];
-    bottom: == "col-l-10"[bottom];
+    @if "page"[width] >= 960 {
+        center: == "col-l-10"[center];
+        size: == "col-l-10"[size];
+    }
 }
 
 #col-11 {
-    left: == "col-l-11"[left];
-    right: == "col-l-11"[right];
-    top: == "col-l-11"[top];
-    bottom: == "col-l-11"[bottom];
+    @if "page"[width] >= 960 {
+        center: == "col-l-11"[center];
+        size: == "col-l-11"[size];
+    }
 }
 
 #col-12 {
-    left: == "col-l-12"[left];
-    right: == "col-l-12"[right];
-    top: == "col-l-12"[top];
-    bottom: == "col-l-12"[bottom];
+    @if "page"[width] >= 960 {
+        center: == "col-l-12"[center];
+        size: == "col-l-12"[size];
+    }
 }
