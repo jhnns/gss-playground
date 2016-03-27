@@ -1,0 +1,5 @@
+/* this case demonstrates a potential bug */
+html {
+    font-size: &[intrinsic-font-size]; /* should equal 16px in most browsers, but GSS calculates 0px */
+    line-height: == 1.4 * &[font-size] !require;
+}
