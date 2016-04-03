@@ -5,6 +5,7 @@ body {
 #box-1 {
     background: hotpink;
     height: 200px;
+    margin-left: auto;
 }
 
 #box-2 {

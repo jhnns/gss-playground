@@ -1,0 +1,6 @@
+body {
+    width: <= ::window[width] - 200;
+    @if ::window[width] > 700 {
+        width: <= ::window[width];
+    }
+}
