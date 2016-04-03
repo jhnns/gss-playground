@@ -4,38 +4,140 @@
     center-x: == ::window[center-x] !require;
     top: == ::window[top] + &[padding] !require;
     left: >= ::window[left] + &[padding] !require;
-    right: <= ::window[right] + &[padding] !require;
+    right: <= ::window[right] - &[padding] !require;
 }
 
-"col-l-1",
-"col-m-1",
-"col-s-1" {
-    left: == "page"[left] !require;
-}
-
-"col-l-1...12" {
+.col {
+    display: none;
     gutter: == 20 !require;
-    width: == "page"[width] / 12 - &[gutter] * (11/12) !require;
-    outer-width: == &[width] + &[gutter] !require;
     top: == "page"[top] !require;
-    right: == &:next[left] - &[gutter] !require;
     bottom: == ($ body)[bottom] - "page"[padding] !require;
+    @if "page"[width] < 500 {
+        outer-width: == "page"[width] !require;
+        width: == &[outer-width] !require;
+        left: == "page"[left] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        outer-width: == (1/6) * ("page"[width] + &[gutter]) !require;
+        width: == &[outer-width] - &[gutter] !require;
+    }
+    @if "page"[width] >= 960 {
+        outer-width: == (1/12) * ("page"[width] + &[gutter]) !require;
+        width: == &[outer-width] - &[gutter] !require;
+    }
 }
 
-"col-m-1...6" {
-    gutter: == 16 !require;
-    width: == "page"[width] / 6 - &[gutter] * (5/6) !require;
-    outer-width: == &[width] + &[gutter] !require;
-    top: == "page"[top] !require;
-    right: == &:next[left] - &[gutter] !require;
-    bottom: == ($ body)[bottom] - "page"[padding] !require;
+.show-grid .col {
+    display: block;
+    background: rgba(0, 0, 0, 0.05);
 }
 
-"col-s-1" {
-    gutter: == "page"[padding] !require;
-    width: == "page"[width] !require;
-    top: == "page"[top] !require;
-    bottom: == ($ body)[bottom] - "page"[padding] !require;
+#col-1 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 0 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 0 * &[outer-width] !require;
+    }
+}
+
+#col-2 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 1 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 0 * &[outer-width] !require;
+    }
+}
+
+#col-3 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 2 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 1 * &[outer-width] !require;
+    }
+}
+
+#col-4 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 3 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 1 * &[outer-width] !require;
+    }
+}
+
+#col-5 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 4 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 2 * &[outer-width] !require;
+    }
+}
+
+#col-6 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 5 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 2 * &[outer-width] !require;
+    }
+}
+
+#col-7 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 6 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 3 * &[outer-width] !require;
+    }
+}
+
+#col-8 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 7 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 3 * &[outer-width] !require;
+    }
+}
+
+#col-9 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 8 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 4 * &[outer-width] !require;
+    }
+}
+
+#col-10 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 9 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 4 * &[outer-width] !require;
+    }
+}
+
+#col-11 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 10 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 5 * &[outer-width] !require;
+    }
+}
+
+#col-12 {
+    @if "page"[width] >= 960 {
+        left: == "page"[left] + 11 * &[outer-width] !require;
+    }
+    @if "page"[width] >= 500 && "page"[width] < 960 {
+        left: == "page"[left] + 5 * &[outer-width] !require;
+    }
 }
 
 html {
@@ -71,59 +173,45 @@ body {
 }
 
 .text-body {
-    @if "page"[width] < 500 {
-        left: == "col-s-1"[left];
-        right: == "col-s-1"[right];
-    }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
-        left: == "col-m-2"[left];
-        right: == "col-m-5"[right];
-    }
-    @if "page"[width] >= 960 {
-        left: == "col-l-4"[left];
-        right: == "col-l-9"[right];
-    }
+    left: == ($ #col-4)[left];
+    right: == ($ #col-9)[right];
 }
 
 .floating-image-left {
+    margin-top: == ($ #col-1)[gutter];
+    margin-bottom: == ($ #col-1)[gutter];
     @if "page"[width] < 500 {
-        margin-top: == "col-s-1"[gutter];
-        margin-bottom: == "col-s-1"[gutter];
-        max-width: 100%;
+        width: == ($ #col-1)[width];
     }
     @if "page"[width] >= 500 && "page"[width] < 960 {
         float: left;
-        margin-top: == "col-m-1"[gutter];
-        margin-right: == "col-m-1"[gutter];
-        margin-bottom: == "col-m-1"[gutter];
-        margin-left: == -1 * "col-m-1"[outer-width];
-        width: == 3 * "col-m-1"[outer-width] - "col-m-1"[gutter];
+        width: == 3 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
+        margin-right: == ($ #col-1)[gutter];
+        margin-left: == -1 * ($ #col-1)[outer-width];
     }
     @if "page"[width] >= 960 {
         float: left;
-        margin-top: == "col-l-1"[gutter];
-        margin-right: == "col-l-1"[gutter];
-        margin-bottom: == "col-l-1"[gutter];
-        margin-left: == -2 * "col-l-1"[outer-width];
-        width: == 4 * "col-l-1"[outer-width] - "col-l-1"[gutter];
+        width: == 4 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
+        margin-right: == ($ #col-1)[gutter];
+        margin-left: == -1 * ($ #col-1)[outer-width];
     }
 }
 
 .wide-image {
     @if "page"[width] < 500 {
-        max-width: 100%;
+        width: == ($ #col-1)[width];
     }
     @if "page"[width] >= 500 && "page"[width] < 960 {
-        margin-top: == "col-m-1"[gutter];
-        margin-bottom: == "col-m-1"[gutter];
-        width: == 6 * "col-m-1"[outer-width] - "col-m-1"[gutter];
-        margin-left: == -1 * "col-m-1"[outer-width];
+        margin-top: == ($ #col-1)[gutter];
+        margin-bottom: == ($ #col-1)[gutter];
+        width: == 6 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
+        margin-left: == -1 * ($ #col-1)[outer-width];
     }
     @if "page"[width] >= 960 {
-        margin-top: == "col-l-1"[gutter];
-        margin-bottom: == "col-l-1"[gutter];
-        width: == 10 * "col-l-1"[outer-width] - "col-l-1"[gutter];
-        margin-left: == -2 * "col-l-1"[outer-width];
+        margin-top: == ($ #col-1)[gutter];
+        margin-bottom: == ($ #col-1)[gutter];
+        width: == 10 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
+        margin-left: == -2 * ($ #col-1)[outer-width];
     }
 }
 
@@ -144,124 +232,4 @@ h1, h2 {
 h2 {
     margin-top: 2em;
     margin-bottom: 1em;
-}
-
-/* ==================================================== */
-/* the following styles are just for grid visualization */
-/* ==================================================== */
-
-.show-grid .visual-grid {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-#col-1 {
-    @if "page"[width] < 500 {
-        center: == "col-s-1"[center];
-        size: == "col-s-1"[size];
-    }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
-        center: == "col-m-1"[center];
-        size: == "col-m-1"[size];
-    }
-    @if "page"[width] >= 960 {
-        center: == "col-l-1"[center];
-        size: == "col-l-1"[size];
-    }
-}
-
-#col-2 {
-    @if "page"[width] >= 500 && "page"[width] < 960 {
-        center: == "col-m-2"[center];
-        size: == "col-m-2"[size];
-    }
-    @if "page"[width] >= 960 {
-        center: == "col-l-2"[center];
-        size: == "col-l-2"[size];
-    }
-}
-
-#col-3 {
-    @if "page"[width] >= 500 && "page"[width] < 960 {
-        center: == "col-m-3"[center];
-        size: == "col-m-3"[size];
-    }
-    @if "page"[width] >= 960 {
-        center: == "col-l-3"[center];
-        size: == "col-l-3"[size];
-    }
-}
-
-#col-4 {
-    @if "page"[width] >= 500 && "page"[width] < 960 {
-        center: == "col-m-4"[center];
-        size: == "col-m-4"[size];
-    }
-    @if "page"[width] >= 960 {
-        center: == "col-l-4"[center];
-        size: == "col-l-4"[size];
-    }
-}
-
-#col-5 {
-    @if "page"[width] >= 500 && "page"[width] < 960 {
-        center: == "col-m-5"[center];
-        size: == "col-m-5"[size];
-    }
-    @if "page"[width] >= 960 {
-        center: == "col-l-5"[center];
-        size: == "col-l-5"[size];
-    }
-}
-
-#col-6 {
-    @if "page"[width] >= 500 && "page"[width] < 960 {
-        center: == "col-m-6"[center];
-        size: == "col-m-6"[size];
-    }
-    @if "page"[width] >= 960 {
-        center: == "col-l-6"[center];
-        size: == "col-l-6"[size];
-    }
-}
-
-#col-7 {
-    @if "page"[width] >= 960 {
-        center: == "col-l-7"[center];
-        size: == "col-l-7"[size];
-    }
-}
-
-#col-8 {
-    @if "page"[width] >= 960 {
-        center: == "col-l-8"[center];
-        size: == "col-l-8"[size];
-    }
-}
-
-#col-9 {
-    @if "page"[width] >= 960 {
-        center: == "col-l-9"[center];
-        size: == "col-l-9"[size];
-    }
-}
-
-#col-10 {
-    @if "page"[width] >= 960 {
-        center: == "col-l-10"[center];
-        size: == "col-l-10"[size];
-    }
-}
-
-#col-11 {
-    @if "page"[width] >= 960 {
-        center: == "col-l-11"[center];
-        size: == "col-l-11"[size];
-    }
-}
-
-#col-12 {
-    @if "page"[width] >= 960 {
-        center: == "col-l-12"[center];
-        size: == "col-l-12"[size];
-    }
 }
