@@ -1,0 +1,11 @@
+"area" {
+    size: == 200;
+    @if ::window[width] > 0 {
+        size: == 500;
+    }
+}
+
+#test {
+    size: == "area"[width];
+    background: hotpink;
+}
