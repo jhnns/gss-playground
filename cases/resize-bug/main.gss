@@ -1,0 +1,10 @@
+#test-1 {
+    @if ::window[width] < 500 {
+        background: green;
+        size: == 200;
+    }
+    @if ::window[width] >= 500 {
+        background: hotpink;
+        size: == 500;
+    }
+}
