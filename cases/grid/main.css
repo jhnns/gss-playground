@@ -1,0 +1,75 @@
+html {
+    font-family: Georgia, serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+body {
+    display: grid;
+    box-sizing: border-box;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 16px 0;
+
+    grid-template-columns:
+        16px auto [col-1]
+        16px auto [col-2]
+        16px auto [col-3]
+        16px auto [col-4]
+        16px auto [col-5]
+        16px auto [col-6]
+        16px auto [col-7]
+        16px auto [col-8]
+        16px auto [col-9]
+        16px auto [col-10]
+        16px auto [col-11]
+        16px auto [col-12];
+}
+
+h1,
+h2 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    /*width: == ($ .text-body)[width] !require;*/
+}
+
+h2 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.col {
+    display: none;
+}
+
+.show-grid .col {
+    display: block;
+
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.floating-image-left {
+    max-width: 100%;
+}
+
+.wide-image {
+    max-width: 100%;
+}
+
+#col-1 {
+
+}
+
+#header {
+    margin: -16px -16px 0 -16px;
+
+    background-image: url("../../assets/woman.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+#header h1 {
+    margin: 0;
+}
