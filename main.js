@@ -9,6 +9,6 @@ if (searchParam.has("gss")) {
 
 document.addEventListener("keyup", function (event) {
     if (event.key === "g") {
-        document.body.classList.toggle("show-grid");
+        document.getElementById("visual-grid").classList.toggle("hide");
     }
 });

@@ -9,7 +9,7 @@
 
 .col {
     display: none;
-    gutter: == 20 !require;
+    gutter: == 16 !require;
     top: == "page"[top] !require;
     bottom: == ($ body)[bottom] - "page"[padding] !require;
     @if "page"[width] < 500 {
