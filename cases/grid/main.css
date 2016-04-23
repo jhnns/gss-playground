@@ -1,79 +1,89 @@
-html {
-    font-family: Georgia, serif;
-    font-size: 1.2rem;
-    line-height: 1.5;
+:root {
+    --gap: 16px;
+    --content-width: 100vw;
+    --num-of-cols-side: 3;
+    --num-of-cols-text: 6;
+    --num-of-cols: calc(var(--num-of-cols-side) * 2 + var(--num-of-cols-text));
+    --col-width: calc((var(--content-width) - (var(--num-of-cols) + 1) * var(--gap)) / var(--num-of-cols));
+    --col-span-1: calc(1 * var(--col-width) + 0 * var(--gap));
+    --col-span-2: calc(2 * var(--col-width) + 1 * var(--gap));
+    --col-span-3: calc(3 * var(--col-width) + 2 * var(--gap));
+    --col-span-4: calc(4 * var(--col-width) + 3 * var(--gap));
+    --col-span-5: calc(5 * var(--col-width) + 4 * var(--gap));
+    --col-span-6: calc(6 * var(--col-width) + 5 * var(--gap));
+    --col-span-7: calc(7 * var(--col-width) + 6 * var(--gap));
+    --col-span-8: calc(8 * var(--col-width) + 7 * var(--gap));
+    --col-span-9: calc(9 * var(--col-width) + 8 * var(--gap));
+    --col-span-10: calc(10 * var(--col-width) + 9 * var(--gap));
+    --col-span-11: calc(11 * var(--col-width) + 10 * var(--gap));
+    --col-span-12: calc(12 * var(--col-width) + 11 * var(--gap));
+    --text-width: var(--col-span-6);
+    --float-image-width: var(--col-span-4);
+    --float-image-offset: calc(var(--col-span-2) + var(--gap));
+    --wide-image-width: var(--col-span-12);
+    --wide-image-offset: calc(var(--col-span-3) + var(--gap));
 }
 
-body {
-    position: relative;
-    margin: 0 auto;
-    max-width: 1300px;
-}
-
-h1,
-h2 {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-h2 {
-    margin-top: 2em;
-    margin-bottom: 1em;
+@media (min-width: 1300px) {
+    :root {
+        --content-width: 1300px;
+    }
 }
 
 .grid {
     display: grid;
-    padding: 16px;
+
     grid-template-columns:
-        [content-start] 1fr
-        1fr
-        1fr
-        [text-start] 1fr
-        1fr
-        1fr
-        1fr
-        1fr
-        1fr [text-end]
-        1fr
-        1fr
-        1fr [content-end];
-    grid-column-gap: 16px;
-    justify-items: stretch;
+        [page-left] 1fr
+            [content-left] repeat(var(--num-of-cols-side), var(--col-width))
+            [text-left] repeat(var(--num-of-cols-text), var(--col-width))
+            [text-right] repeat(var(--num-of-cols-side), var(--col-width))
+            [content-right]
+        1fr [page-right];
+    grid-column-gap: var(--gap);
 }
 
-.visual-col {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.hide {
-    visibility: hidden;
+.text-body {
+    grid-column: text-left / text-right;
 }
 
 .floating-image-left {
-    max-width: 100%;
+    float: left;
+    width: var(--float-image-width);
+    margin-top: var(--gap);
+    margin-right: var(--gap);
+    margin-bottom: var(--gap);
+    margin-left: calc(-1 * var(--float-image-offset));
 }
 
 .wide-image {
-    max-width: 100%;
+    width: var(--wide-image-width);
+    margin-top: var(--gap);
+    margin-right: calc(-1 * var(--wide-image-offset));
+    margin-bottom: var(--gap);
+    margin-left: calc(-1 * var(--wide-image-offset));
 }
 
 #header {
-    margin: -16px -16px 0 -16px;
-
-    background-image: url("../../assets/woman.jpg");
-    background-position: center;
-    background-size: cover;
-    grid-column: content-start / content-end;
+    grid-column: page-left / page-right;
 }
 
 #header h1 {
-    margin: 0;
+    margin-top: 50vh;
+    margin-bottom: 3em;
+
+    /* Does not work because there are no subgrids yet */
+    /* http://meyerweb.com/eric/thoughts/2016/01/15/subgrids-considered-essential/ */
+    grid-column: text-left / text-right;
+
+    /* That's why we have to set these: */
+    max-width: var(--text-width);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #visual-grid {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
