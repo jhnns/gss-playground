@@ -1,8 +1,6 @@
 :root {
     --gap: 16px;
     --content-width: 100vw;
-    --num-of-cols-side: 3;
-    --num-of-cols-text: 6;
     --num-of-cols: calc(var(--num-of-cols-side) * 2 + var(--num-of-cols-text));
     --col-width: calc((var(--content-width) - (var(--num-of-cols) + 1) * var(--gap)) / var(--num-of-cols));
     --col-span-1: calc(1 * var(--col-width) + 0 * var(--gap));
@@ -17,7 +15,7 @@
     --col-span-10: calc(10 * var(--col-width) + 9 * var(--gap));
     --col-span-11: calc(11 * var(--col-width) + 10 * var(--gap));
     --col-span-12: calc(12 * var(--col-width) + 11 * var(--gap));
-    --text-width: var(--col-span-6);
+    --text-width: calc(var(--num-of-cols-text) * var(--col-width) + (var(--num-of-cols-text) - 1) * var(--gap));
     --float-image-width: var(--col-span-4);
     --float-image-offset: calc(var(--col-span-2) + var(--gap));
     --wide-image-width: var(--col-span-12);
@@ -27,6 +25,35 @@
 @media (min-width: 1300px) {
     :root {
         --content-width: 1300px;
+    }
+}
+
+@media (min-width: 960px) {
+    :root {
+        --num-of-cols-side: 3;
+        --num-of-cols-text: 6;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 959px) {
+    :root {
+        --num-of-cols-side: 1;
+        --num-of-cols-text: 4;
+        --float-image-width: var(--col-span-3);
+        --float-image-offset: calc(var(--col-span-1) + var(--gap));
+        --wide-image-width: calc(var(--col-span-6) + var(--gap) * 2);
+        --wide-image-offset: calc(var(--col-span-1) + var(--gap) * 2);
+    }
+}
+
+@media (max-width: 499px) {
+    :root {
+        --num-of-cols-side: 0;
+        --num-of-cols-text: 1;
+        --float-image-width: var(--col-span-1);
+        --float-image-offset: 0;
+        --wide-image-width: calc(var(--col-span-1) + var(--gap) * 2);
+        --wide-image-offset: var(--gap);
     }
 }
 
@@ -41,6 +68,14 @@
             [content-right]
         1fr [page-right];
     grid-column-gap: var(--gap);
+}
+
+@media (max-width: 499px) {
+    .grid {
+        display: grid;
+        grid-template-columns: [page-left] 0 [content-left] var(--gap) [text-left] var(--col-span-1) [text-right] var(--gap) [content-right] 0 [page-right];
+        grid-column-gap: 0;
+    }
 }
 
 .text-body {
@@ -88,4 +123,27 @@
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+@media (max-width: 959px) {
+    #visual-col-9,
+    #visual-col-10,
+    #visual-col-11,
+    #visual-col-12,
+    #visual-col-13,
+    #visual-col-14 {
+        display: none;
+    }
+}
+
+@media (max-width: 499px) {
+    #visual-col-1,
+    #visual-col-2,
+    #visual-col-4,
+    #visual-col-5,
+    #visual-col-6,
+    #visual-col-7,
+    #visual-col-8 {
+        display: none;
+    }
 }
