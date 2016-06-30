@@ -1,106 +1,118 @@
 :root {
-    --gap: 16px;
-    --content-width: 100vw;
-    --num-of-cols: calc(var(--num-of-cols-side) * 2 + var(--num-of-cols-text));
+    /*
+    These variables relate to the mobile layout.
+    They are overridden in the following media queries to adapt to different screen sizes.
+    */
+    --gap: 24px;
+    --block-gap: 24px;
+    --floating-image-width: 100%;
+    --floating-image-float: none;
+    --header-h1-width: var(--col-width);
+    --floating-image-margin: var(--block-gap) 0 var(--block-gap) 0;
+    --content-width: calc(100vw - 20px); /* 20px is the average scrollbar */
     --col-width: calc((var(--content-width) - (var(--num-of-cols) + 1) * var(--gap)) / var(--num-of-cols));
-    --col-span-1: calc(1 * var(--col-width) + 0 * var(--gap));
-    --col-span-2: calc(2 * var(--col-width) + 1 * var(--gap));
-    --col-span-3: calc(3 * var(--col-width) + 2 * var(--gap));
-    --col-span-4: calc(4 * var(--col-width) + 3 * var(--gap));
-    --col-span-5: calc(5 * var(--col-width) + 4 * var(--gap));
-    --col-span-6: calc(6 * var(--col-width) + 5 * var(--gap));
-    --col-span-7: calc(7 * var(--col-width) + 6 * var(--gap));
-    --col-span-8: calc(8 * var(--col-width) + 7 * var(--gap));
-    --col-span-9: calc(9 * var(--col-width) + 8 * var(--gap));
-    --col-span-10: calc(10 * var(--col-width) + 9 * var(--gap));
-    --col-span-11: calc(11 * var(--col-width) + 10 * var(--gap));
-    --col-span-12: calc(12 * var(--col-width) + 11 * var(--gap));
-    --text-width: calc(var(--num-of-cols-text) * var(--col-width) + (var(--num-of-cols-text) - 1) * var(--gap));
-    --float-image-width: var(--col-span-4);
-    --float-image-offset: calc(var(--col-span-2) + var(--gap));
-    --wide-image-width: var(--col-span-12);
-    --wide-image-offset: calc(var(--col-span-3) + var(--gap));
 }
 
-@media (min-width: 1300px) {
+@media (max-width: 599px) {
     :root {
-        --content-width: 1300px;
+        --num-of-cols: 1;
+    }
+
+    .grid {
+        grid-template-columns:
+            [header-left wide-image-left] 0
+            [text-body-left] auto
+            [text-body-right] 0
+            [header-right wide-image-right];
+    }
+}
+
+@media (min-width: 600px) {
+    :root {
+        --gap: 16px;
+        --num-of-cols: 6;
+        --header-h1-width: calc(4 * var(--col-width) + 3 * var(--gap))
+    }
+
+    .grid {
+        grid-template-columns:
+            [header-left wide-image-left] 0 1fr
+            [text-body-left] repeat(4, 1fr)
+            [text-body-right] 1fr 0
+            [header-right wide-image-right];
     }
 }
 
 @media (min-width: 960px) {
     :root {
-        --num-of-cols-side: 3;
-        --num-of-cols-text: 6;
+        --floating-image-width: calc(4 * var(--col-width) + 3 * var(--gap));
+        --floating-image-float: left;
+        --floating-image-margin: var(--block-gap) var(--gap) var(--block-gap) calc(-1 * (2 * var(--col-width) + 2 * var(--gap)));
+        --num-of-cols: 12;
+        --header-h1-width: calc(8 * var(--col-width) + 7 * var(--gap))
+    }
+
+    .grid {
+        grid-template-columns:
+            [header-left wide-image-left] 0 repeat(3, 1fr)
+            [text-body-left] repeat(6, 1fr)
+            [text-body-right] repeat(3, 1fr) 0
+            [header-right wide-image-right];
     }
 }
 
-@media (min-width: 500px) and (max-width: 959px) {
+@media (min-width: 1300px) {
     :root {
-        --num-of-cols-side: 1;
-        --num-of-cols-text: 4;
-        --float-image-width: var(--col-span-3);
-        --float-image-offset: calc(var(--col-span-1) + var(--gap));
-        --wide-image-width: calc(var(--col-span-6) + var(--gap) * 2);
-        --wide-image-offset: calc(var(--col-span-1) + var(--gap) * 2);
+        --content-width: 1300px;
+        --header-h1-width: calc(6 * var(--col-width) + 5 * var(--gap))
     }
-}
 
-@media (max-width: 499px) {
-    :root {
-        --num-of-cols-side: 0;
-        --num-of-cols-text: 1;
-        --float-image-width: var(--col-span-1);
-        --float-image-offset: 0;
-        --wide-image-width: calc(var(--col-span-1) + var(--gap) * 2);
-        --wide-image-offset: var(--gap);
+    .grid {
+        grid-template-columns:
+            [header-left] 1fr var(--col-width)
+            [wide-image-left] repeat(2, var(--col-width))
+            [text-body-left] repeat(6, var(--col-width))
+            [text-body-right] repeat(2, var(--col-width))
+            [wide-image-right] var(--col-width) 1fr
+            [header-right];
     }
 }
 
 .grid {
     display: grid;
-
-    grid-template-columns:
-        [page-left] 1fr
-            [content-left] repeat(var(--num-of-cols-side), var(--col-width))
-            [text-left] repeat(var(--num-of-cols-text), var(--col-width))
-            [text-right] repeat(var(--num-of-cols-side), var(--col-width))
-            [content-right]
-        1fr [page-right];
     grid-column-gap: var(--gap);
 }
 
-@media (max-width: 499px) {
-    .grid {
-        display: grid;
-        grid-template-columns: [page-left] 0 [content-left] var(--gap) [text-left] var(--col-span-1) [text-right] var(--gap) [content-right] 0 [page-right];
-        grid-column-gap: 0;
-    }
+.text-body {
+    grid-column: text-body-left / text-body-right;
+    margin-bottom: var(--block-gap);
 }
 
-.text-body {
-    grid-column: text-left / text-right;
+.text-body > p {
+    margin: 0 0 var(--gap);
+}
+
+.text-body > p:last-child {
+    margin-bottom: 0;
 }
 
 .floating-image-left {
-    float: left;
-    width: var(--float-image-width);
-    margin-top: var(--gap);
-    margin-right: var(--gap);
-    margin-bottom: var(--gap);
-    margin-left: calc(-1 * var(--float-image-offset));
+    width: var(--floating-image-width);
+    float: var(--floating-image-float);
+    margin: var(--floating-image-margin);
 }
 
 .wide-image {
-    width: var(--wide-image-width);
-    margin-top: var(--gap);
-    margin-right: calc(-1 * var(--wide-image-offset));
-    margin-bottom: var(--gap);
-    margin-left: calc(-1 * var(--wide-image-offset));
+    grid-column: wide-image-left / wide-image-right;
+    margin-bottom: var(--block-gap);
+}
+
+.wide-image > img {
+    max-width: 100%;
 }
 
 #header {
-    grid-column: page-left / page-right;
+    grid-column: header-left / header-right;
 }
 
 #header h1 {
@@ -112,7 +124,7 @@
     grid-column: text-left / text-right;
 
     /* That's why we have to set these: */
-    max-width: var(--text-width);
+    max-width: var(--header-h1-width);
     margin-left: auto;
     margin-right: auto;
 }
@@ -126,6 +138,7 @@
 }
 
 @media (max-width: 959px) {
+    #visual-col-8,
     #visual-col-9,
     #visual-col-10,
     #visual-col-11,
@@ -136,14 +149,11 @@
     }
 }
 
-@media (max-width: 499px) {
-    #visual-col-1,
-    #visual-col-2,
+@media (max-width: 599px) {
     #visual-col-4,
     #visual-col-5,
     #visual-col-6,
-    #visual-col-7,
-    #visual-col-8 {
+    #visual-col-7 {
         display: none;
     }
 }

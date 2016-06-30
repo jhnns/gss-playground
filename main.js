@@ -1,7 +1,7 @@
-var searchParam = new URLSearchParams(location.search.slice(1));
+let searchParam = new URLSearchParams(location.search.slice(1));
 
 if (searchParam.has("gss")) {
-    var cssStylesheet = document.querySelector("link[href^=main]");
+    let cssStylesheet = document.querySelector("link[href^=main]");
 
     cssStylesheet.parentNode.removeChild(cssStylesheet);
     window.engine = new GSS(document);
@@ -12,3 +12,7 @@ document.addEventListener("keyup", function (event) {
         document.getElementById("visual-grid").classList.toggle("hide");
     }
 });
+
+function cssProp(property) {
+    return getComputedStyle(document.documentElement).getPropertyValue(property).trim();
+}
