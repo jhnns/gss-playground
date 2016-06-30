@@ -3,7 +3,7 @@
     These variables relate to the mobile layout.
     They are overridden in the following media queries to adapt to different screen sizes.
     */
-    --gap: 24px;
+    --gap: 16px;
     --block-gap: 24px;
     --floating-image-width: 100%;
     --floating-image-float: none;
@@ -13,32 +13,31 @@
     --col-width: calc((var(--content-width) - (var(--num-of-cols) + 1) * var(--gap)) / var(--num-of-cols));
 }
 
-@media (max-width: 599px) {
+@media (max-width: 549px) {
     :root {
         --num-of-cols: 1;
     }
 
     .grid {
         grid-template-columns:
-            [header-left wide-image-left] 0
-            [text-body-left] auto
-            [text-body-right] 0
+            [header-left wide-image-left] 1fr
+            [text-body-left] var(--col-width)
+            [text-body-right] 1fr
             [header-right wide-image-right];
     }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 550px) {
     :root {
-        --gap: 16px;
         --num-of-cols: 6;
         --header-h1-width: calc(4 * var(--col-width) + 3 * var(--gap))
     }
 
     .grid {
         grid-template-columns:
-            [header-left wide-image-left] 0 1fr
-            [text-body-left] repeat(4, 1fr)
-            [text-body-right] 1fr 0
+            [header-left wide-image-left] 1fr var(--col-width)
+            [text-body-left] repeat(4, var(--col-width))
+            [text-body-right] var(--col-width) 1fr
             [header-right wide-image-right];
     }
 }
@@ -54,9 +53,9 @@
 
     .grid {
         grid-template-columns:
-            [header-left wide-image-left] 0 repeat(3, 1fr)
-            [text-body-left] repeat(6, 1fr)
-            [text-body-right] repeat(3, 1fr) 0
+            [header-left wide-image-left] 1fr repeat(3, var(--col-width))
+            [text-body-left] repeat(6, var(--col-width))
+            [text-body-right] repeat(3, var(--col-width)) 1fr
             [header-right wide-image-right];
     }
 }
@@ -149,7 +148,7 @@
     }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 550px) {
     #visual-col-4,
     #visual-col-5,
     #visual-col-6,
