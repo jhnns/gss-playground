@@ -48,6 +48,10 @@ img {
     background: rgba(0, 0, 0, 0.1);
 }
 
+.wide-image > img {
+    width: 100%;
+}
+
 #header {
     background-image: url("../../assets/woman.jpg");
     background-position: center;

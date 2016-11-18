@@ -8,7 +8,6 @@
 }
 
 .col {
-    display: none;
     gutter: == 16 !require;
     top: == "page"[top] !require;
     bottom: == ($ body)[bottom] - "page"[padding] !require;
@@ -25,11 +24,6 @@
         outer-width: == (1/12) * ("page"[width] + &[gutter]) !require;
         width: == &[outer-width] - &[gutter] !require;
     }
-}
-
-.show-grid .col {
-    display: block;
-    background: rgba(0, 0, 0, 0.05);
 }
 
 #col-1 {
@@ -171,34 +165,32 @@ body {
         width: == ($ #col-1)[width];
     }
     @if "page"[width] >= 500 && "page"[width] < 960 {
-        float: left;
-        width: == 3 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
-        margin-right: == ($ #col-1)[gutter];
-        margin-left: == -1 * ($ #col-1)[outer-width];
+        width: == 4 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
     }
     @if "page"[width] >= 960 {
         float: left;
         width: == 4 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
         margin-right: == ($ #col-1)[gutter];
-        margin-left: == -1 * ($ #col-1)[outer-width];
+        margin-left: == -2 * ($ #col-1)[outer-width];
     }
 }
 
 .wide-image {
+    left: == ($ #col-2)[left];
+    right: == ($ #col-11)[right];
     @if "page"[width] < 500 {
-        width: == ($ #col-1)[width];
+        left: == ($ #col-1)[left] - ($ #col-1)[gutter];
+        right: == ($ #col-1)[right] + ($ #col-1)[gutter];
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 500 {
         margin-top: == ($ #col-1)[gutter];
         margin-bottom: == ($ #col-1)[gutter];
-        width: == 6 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
-        margin-left: == -1 * ($ #col-1)[outer-width];
     }
-    @if "page"[width] >= 960 {
-        margin-top: == ($ #col-1)[gutter];
+}
+
+.wide-image > img {
+    @if "page"[width] >= 500 {
         margin-bottom: == ($ #col-1)[gutter];
-        width: == 10 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
-        margin-left: == -2 * ($ #col-1)[outer-width];
     }
 }
 
