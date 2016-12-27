@@ -178,11 +178,11 @@ body {
 .wide-image {
     left: == ($ #col-2)[left];
     right: == ($ #col-11)[right];
-    @if "page"[width] < 500 {
+    @if "page"[width] < 960 {
         left: == ($ #col-1)[left] - ($ #col-1)[gutter];
-        right: == ($ #col-1)[right] + ($ #col-1)[gutter];
+        right: == ($ #col-12)[right] + ($ #col-12)[gutter];
     }
-    @if "page"[width] >= 500 {
+    @if "page"[width] >= 960 {
         margin-top: == ($ #col-1)[gutter];
         margin-bottom: == ($ #col-1)[gutter];
     }
