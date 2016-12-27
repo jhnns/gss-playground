@@ -9,7 +9,7 @@
     --floating-image-float: none;
     --header-h1-width: var(--col-width);
     --floating-image-margin: var(--block-gap) 0 var(--block-gap) 0;
-    --content-width: calc(100vw - 20px); /* 20px is the average scrollbar */
+    --content-width: 100vw;
     --col-width: calc((var(--content-width) - (var(--num-of-cols) + 1) * var(--gap)) / var(--num-of-cols));
 }
 
