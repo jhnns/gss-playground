@@ -11,12 +11,12 @@
     gutter: == 16 !require;
     top: == "page"[top] !require;
     bottom: == ($ body)[bottom] - "page"[padding] !require;
-    @if "page"[width] < 500 {
+    @if "page"[width] < 550 {
         outer-width: == "page"[width] !require;
         width: == &[outer-width] !require;
         left: == "page"[left] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         outer-width: == (1/6) * ("page"[width] + &[gutter]) !require;
         width: == &[outer-width] - &[gutter] !require;
     }
@@ -30,7 +30,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 0 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 0 * &[outer-width] !require;
     }
 }
@@ -39,7 +39,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 1 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 0 * &[outer-width] !require;
     }
 }
@@ -48,7 +48,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 2 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 1 * &[outer-width] !require;
     }
 }
@@ -57,7 +57,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 3 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 1 * &[outer-width] !require;
     }
 }
@@ -66,7 +66,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 4 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 2 * &[outer-width] !require;
     }
 }
@@ -75,7 +75,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 5 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 2 * &[outer-width] !require;
     }
 }
@@ -84,7 +84,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 6 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 3 * &[outer-width] !require;
     }
 }
@@ -93,7 +93,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 7 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 3 * &[outer-width] !require;
     }
 }
@@ -102,7 +102,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 8 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 4 * &[outer-width] !require;
     }
 }
@@ -111,7 +111,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 9 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 4 * &[outer-width] !require;
     }
 }
@@ -120,7 +120,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 10 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 5 * &[outer-width] !require;
     }
 }
@@ -129,7 +129,7 @@
     @if "page"[width] >= 960 {
         left: == "page"[left] + 11 * &[outer-width] !require;
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         left: == "page"[left] + 5 * &[outer-width] !require;
     }
 }
@@ -161,10 +161,10 @@ body {
 .floating-image-left {
     margin-top: == ($ #col-1)[gutter];
     margin-bottom: == ($ #col-1)[gutter];
-    @if "page"[width] < 500 {
+    @if "page"[width] < 550 {
         width: == ($ #col-1)[width];
     }
-    @if "page"[width] >= 500 && "page"[width] < 960 {
+    @if "page"[width] >= 550 && "page"[width] < 960 {
         width: == 4 * ($ #col-1)[outer-width] - ($ #col-1)[gutter];
     }
     @if "page"[width] >= 960 {
@@ -189,7 +189,7 @@ body {
 }
 
 .wide-image > img {
-    @if "page"[width] >= 500 {
+    @if "page"[width] >= 550 {
         margin-bottom: == ($ #col-1)[gutter];
     }
 }
