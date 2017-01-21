@@ -48,8 +48,18 @@ img {
     background: rgba(0, 0, 0, 0.1);
 }
 
+.wide-image {
+    margin-bottom: 16px;
+}
+
 .wide-image > img {
     width: 100%;
+}
+
+.floating-image-left {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-right: 16px;
 }
 
 #header {

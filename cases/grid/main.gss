@@ -159,8 +159,6 @@ body {
 }
 
 .floating-image-left {
-    margin-top: == ($ #col-1)[gutter];
-    margin-bottom: == ($ #col-1)[gutter];
     @if "page"[width] < 550 {
         width: == ($ #col-1)[width];
     }
@@ -181,16 +179,6 @@ body {
     @if "page"[width] < 960 {
         left: == ($ #col-1)[left] - ($ #col-1)[gutter];
         right: == ($ #col-12)[right] + ($ #col-12)[gutter];
-    }
-    @if "page"[width] >= 960 {
-        margin-top: == ($ #col-1)[gutter];
-        margin-bottom: == ($ #col-1)[gutter];
-    }
-}
-
-.wide-image > img {
-    @if "page"[width] >= 550 {
-        margin-bottom: == ($ #col-1)[gutter];
     }
 }
 

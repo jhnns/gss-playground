@@ -4,11 +4,10 @@
     They are overridden in the following media queries to adapt to different screen sizes.
     */
     --gap: 16px;
-    --block-gap: 24px;
     --floating-image-width: 100%;
     --floating-image-float: none;
     --header-h1-width: var(--col-width);
-    --floating-image-margin: var(--block-gap) 0 var(--block-gap) 0;
+    --floating-image-margin-left: 0;
     --content-width: 100vw;
     --col-width: calc((var(--content-width) - (var(--num-of-cols) + 1) * var(--gap)) / var(--num-of-cols));
 }
@@ -46,7 +45,7 @@
     :root {
         --floating-image-width: calc(4 * var(--col-width) + 3 * var(--gap));
         --floating-image-float: left;
-        --floating-image-margin: var(--block-gap) var(--gap) var(--block-gap) calc(-1 * (2 * var(--col-width) + 2 * var(--gap)));
+        --floating-image-margin-left: calc(-1 * (2 * var(--col-width) + 2 * var(--gap)));
         --num-of-cols: 12;
         --header-h1-width: calc(8 * var(--col-width) + 7 * var(--gap))
     }
@@ -84,7 +83,7 @@
 
 .text-body {
     grid-column: text-body-left / text-body-right;
-    margin-bottom: var(--block-gap);
+    margin-bottom: var(--gap);
 }
 
 .text-body > p {
@@ -98,12 +97,12 @@
 .floating-image-left {
     width: var(--floating-image-width);
     float: var(--floating-image-float);
-    margin: var(--floating-image-margin);
+    margin-left: var(--floating-image-margin-left);
 }
 
 .wide-image {
     grid-column: wide-image-left / wide-image-right;
-    margin-bottom: var(--block-gap);
+    margin-bottom: var(--gap);
 }
 
 .wide-image > img {
