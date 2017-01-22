@@ -1,7 +1,6 @@
 /*
-This file contains styles that are not concerned with positioning, like typography rules, background-images, etc.
-They are just visual enhancements but have no impact on the positioning inside the grid and thus are used in both
-versions, the css-version and the gss-version
+This file contains styles that are not concerned with positioning inside the grid, like typography rules, background-images, etc.
+These styles are jused in both versions, main.css and main.gss.
 */
 
 html {
