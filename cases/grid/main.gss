@@ -1,4 +1,4 @@
-"page" {
+"page" {
     padding: == 16 !require;
     width: <= 1300 !require;
     center-x: == ::window[center-x] !require;
